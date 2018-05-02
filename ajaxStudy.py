@@ -1,6 +1,6 @@
 from urllib.parse import urlencode
 import requests
-from pyquery import PyQuery as py
+from pyquery import PyQuery as pq
 
 base_url='https://m.weibo.cn/api/container/getIndex?'
 
@@ -28,7 +28,7 @@ def get_page(page):
 
 def parse_page(json):
     if json:
-        items = json.get('cards')
+        items = json['data'].get('cards')
         for item in items:
             item = item.get('mblog')
             weibo = {}
